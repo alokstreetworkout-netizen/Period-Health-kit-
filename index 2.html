@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You, Always ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+:root {
+  --cream: #F8F2E8;
+  --warm-beige: #EDE4D3;
+  --paper-white: #FFFDF9;
+  --dusty-rose: #D9B8B1;
+  --soft-brown: #8D6E63;
+  --deep-brown: #5C3D2E;
+  --muted-lavender: #C5B8D4;
+  --sage: #A8B89A;
+  --vintage-peach: #E8C4A0;
+  --ink: #3D2B1F;
+  --ink-light: #6B4C3B;
+  --tape-pink: rgba(217,184,177,0.55);
+  --tape-yellow: rgba(255,228,150,0.55);
+  --tape-blue: rgba(180,210,220,0.55);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--cream);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  font-family: 'Lora', serif;
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(90,55,30,0.10) 100%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============ NAVIGATION ============ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(248,242,232,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(141,110,99,0.18);
+  padding: 0.6rem 1rem;
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+nav button {
+  background: none;
+  border: 1.5px solid transparent;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+nav button:hover, nav button.active {
+  border-color: var(--dusty-rose);
+  background: var(--paper-white);
+  color: var(--deep-brown);
+}
+
+/* ============ SECTIONS ============ */
+section {
+  padding: 2.5rem 1.2rem 3rem;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-divider {
+  width: 80%;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px dashed rgba(141,110,99,0.25);
+}
+
+/* ============ SCRAPBOOK ELEMENTS ============ */
+.washi {
+  display: inline-block;
+  padding: 2px 18px;
+  font-family: 'Caveat', cursive;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+.washi-pink { background: var(--tape-pink); }
+.washi-yellow { background: var(--tape-yellow); }
+.washi-blue { background: var(--tape-blue); }
+.washi-sage { background: rgba(168,184,154,0.5); }
+
+.chapter-label {
+  font-family: 'Caveat', cursive;
+  font-size: 0.85rem;
+  color: var(--soft-brown);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--deep-brown);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+  color: var(--ink-light);
+}
+
+/* ============ LANDING PAGE ============ */
+#landing {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-doodle {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+#landing h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 9vw, 4rem);
+  color: var(--deep-brown);
+  line-height: 1.15;
+  margin-bottom: 0.7rem;
+}
+
+#landing .subtitle {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-light);
+  margin-bottom: 2rem;
+}
+
+.welcome-note {
+  background: var(--paper-white);
+  border: 1px solid rgba(141,110,99,0.15);
+  border-radius: 2px;
+  padding: 1.5rem 1.8rem;
+  max-width: 460px;
+  text-align: left;
+  position: relative;
+  box-shadow: 2px 4px 18px rgba(90,55,30,0.10), 0 1px 3px rgba(90,55,30,0.06);
+  transform: rotate(-0.8deg);
+}
+.welcome-note::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 50%; transform: translateX(-50%);
+  width: 60px; height: 16px;
+  background: var(--tape-pink);
+}
+.welcome-note p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.welcome-note .note-sig {
+  margin-top: 1rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  color: var(--soft-brown);
+  text-align: right;
+}
+
+.landing-heart {
+  font-size: 2.5rem;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 1.5rem;
+  transition: transform 0.15s;
+  animation: heartbeat 3s ease-in-out infinite;
+  user-select: none;
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.landing-heart:hover { transform: scale(1.2); }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: var(--soft-brown);
+  opacity: 0.7;
+  animation: bobble 2s ease-in-out infinite;
+  text-align: center;
+}
+@keyframes bobble { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+/* ============ PERIOD JOURNAL ============ */
+.cycle-card {
+  background: var(--paper-white);
+  border: 1px solid rgba(141,110,99,0.12);
+  border-radius: 2px;
+  padding: 1.5rem;
+  box-shadow: 2px 4px 16px rgba(90,55,30,0.08);
+  position: relative;
+  margin-bottom: 1rem;
+}
+.cycle-card::after {
+  content: '';
+  position: absolute;
+  top: -8px; right: 24px;
+  width: 50px; height: 14px;
+  background: var(--tape-yellow);
+}
+
+.cycle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.cycle-stat {
+  background: rgba(248,242,232,0.8);
+  border: 1px dashed rgba(141,110,99,0.2);
+  border-radius: 4px;
+  padding: 0.8rem;
+  text-align: center;
+}
+.cycle-stat .label {
+  font-family: 'Caveat', cursive;
+  font-size: 0.82rem;
+  color: var(--soft-brown);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.cycle-stat .value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--deep-brown);
+  font-weight: 700;
+}
+
+.period-input-row {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+.period-input-row label {
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.period-input-row input, .period-input-row select {
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(141,110,99,0.3);
+  border-radius: 4px;
+  background: var(--paper-white);
+  color: var(--ink);
+  width: 100%;
+}
+.period-input-row .input-group { flex: 1; min-width: 130px; }
+
+.btn-save {
+  background: var(--dusty-rose);
+  color: var(--paper-white);
+  border: none;
+  padding: 0.55rem 1.3rem;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-save:hover { background: var(--soft-brown); transform: translateY(-1px); }
+
+.cycle-phase-bar {
+  margin-top: 1.2rem;
+  height: 8px;
+  background: rgba(141,110,99,0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.cycle-phase-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage), var(--dusty-rose));
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+.phase-label {
+  font-family: 'Caveat', cursive;
+  font-size: 0.82rem;
+  color: var(--soft-brown);
+  text-align: center;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+/* ============ COMFORT MODE ============ */
+.comfort-btn {
+  display: block;
+  width: 100%;
+  padding: 1.4rem;
+  background: linear-gradient(135deg, var(--dusty-rose), #C9A0A0);
+  color: var(--paper-white);
+  border: none;
+  border-radius: 4px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  cursor: pointer;
+  box-shadow: 3px 5px 20px rgba(180,100,100,0.18);
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.comfort-btn::after {
+  content: '♥';
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+.comfort-btn:hover { transform: translateY(-2px); box-shadow: 3px 8px 24px rgba(180,100,100,0.25); }
+
+.comfort-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(60,35,20,0.45);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.comfort-modal.open { display: flex; }
+
+.comfort-card {
+  background: var(--paper-white);
+  border-radius: 2px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 4px 8px 40px rgba(60,35,20,0.18);
+  position: relative;
+  max-height: 90svh;
+  overflow-y: auto;
+  transform: rotate(-0.5deg);
+}
+.comfort-card::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 16px;
+  background: var(--tape-pink);
+}
+
+.comfort-msg {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--deep-brown);
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px dashed rgba(141,110,99,0.2);
+  margin-bottom: 1rem;
+}
+
+.checklist { list-style: none; margin: 1rem 0; }
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed rgba(141,110,99,0.1);
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.checklist li.done { color: var(--soft-brown); text-decoration: line-through; }
+.checklist li .check-box {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--dusty-rose);
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+.checklist li.done .check-box { background: var(--dusty-rose); color: white; }
+
+.comfort-new-msg-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.6rem;
+  background: none;
+  border: 1.5px dashed var(--dusty-rose);
+  border-radius: 4px;
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  color: var(--soft-brown);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.comfort-new-msg-btn:hover { background: rgba(217,184,177,0.15); }
+.close-modal {
+  position: absolute;
+  top: 0.7rem; right: 0.9rem;
+  background: none; border: none;
+  font-size: 1.3rem; cursor: pointer; color: var(--soft-brown);
+}
+
+/* ============ OPEN WHEN ============ */
+.envelopes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.envelope-wrap {
+  cursor: pointer;
+  perspective: 600px;
+}
+
+.envelope {
+  position: relative;
+  padding-bottom: 65%;
+  border-radius: 2px;
+}
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  background: var(--vintage-peach);
+  border: 1px solid rgba(141,110,99,0.2);
+  box-shadow: 2px 3px 12px rgba(90,55,30,0.1);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.8rem;
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+.envelope-body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  border-left: calc(50% + 1px) solid transparent;
+  border-right: calc(50% + 1px) solid transparent;
+  border-top: 40% solid rgba(141,110,99,0.18);
+  transition: transform 0.3s;
+  transform-origin: top center;
+}
+.envelope-wrap:hover .envelope-body::before {
+  transform: rotateX(-160deg);
+}
+.envelope-wrap:hover .envelope-body {
+  transform: translateY(-3px);
+}
+.envelope-label {
+  font-family: 'Caveat', cursive;
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  text-align: center;
+  padding: 0 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.envelope-heart {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  z-index: 1;
+}
+
+.letter-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(60,35,20,0.5);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.letter-modal.open { display: flex; }
+
+.letter-card {
+  background: var(--paper-white);
+  padding: 2rem 1.8rem 2.5rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 4px 8px 40px rgba(60,35,20,0.2);
+  position: relative;
+  max-height: 88svh;
+  overflow-y: auto;
+  border-radius: 2px;
+  transform: rotate(0.4deg);
+}
+.letter-card::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 30px;
+  width: 55px; height: 14px;
+  background: var(--tape-blue);
+}
+.letter-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--soft-brown);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed rgba(141,110,99,0.25);
+}
+.letter-body {
+  font-family: 'Caveat', cursive;
+  font-size: 1.12rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+.letter-sig {
+  margin-top: 1.5rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  color: var(--soft-brown);
+  text-align: right;
+}
+
+/* ============ MEMORY VAULT ============ */
+.polaroid-wall {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.polaroid {
+  background: var(--paper-white);
+  padding: 0.7rem 0.7rem 1.8rem;
+  box-shadow: 2px 4px 14px rgba(90,55,30,0.12);
+  width: calc(50% - 0.4rem);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.polaroid:nth-child(odd) { transform: rotate(-1.5deg); }
+.polaroid:nth-child(even) { transform: rotate(1.2deg); }
+.polaroid:hover { transform: rotate(0deg) translateY(-5px) scale(1.03); box-shadow: 4px 10px 28px rgba(90,55,30,0.18); z-index: 5; }
+
+.polaroid-photo {
+  width: 100%;
+  padding-bottom: 100%;
+  background: var(--warm-beige);
+  position: relative;
+  overflow: hidden;
+}
+.polaroid-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.polaroid-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: rgba(141,110,99,0.35);
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.polaroid-photo-placeholder span {
+  font-family: 'Caveat', cursive;
+  font-size: 0.75rem;
+  color: rgba(141,110,99,0.5);
+}
+
+.polaroid-caption {
+  font-family: 'Caveat', cursive;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  text-align: center;
+  margin-top: 0.5rem;
+  padding: 0 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.polaroid-date {
+  font-family: 'Caveat', cursive;
+  font-size: 0.75rem;
+  color: var(--soft-brown);
+  text-align: center;
+}
+
+.tape-strip {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 13px;
+  background: var(--tape-yellow);
+  opacity: 0.9;
+}
+
+.add-memory-btn {
+  width: 100%;
+  padding: 1.1rem;
+  border: 2px dashed rgba(141,110,99,0.3);
+  background: rgba(248,242,232,0.6);
+  border-radius: 4px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  color: var(--soft-brown);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+.add-memory-btn:hover { background: rgba(217,184,177,0.15); border-color: var(--dusty-rose); }
+
+.memory-form {
+  display: none;
+  background: var(--paper-white);
+  border: 1px solid rgba(141,110,99,0.15);
+  border-radius: 2px;
+  padding: 1.3rem;
+  margin-top: 0.8rem;
+  box-shadow: 2px 4px 14px rgba(90,55,30,0.08);
+  position: relative;
+}
+.memory-form.open { display: block; }
+.memory-form::before {
+  content: '';
+  position: absolute;
+  top: -8px; right: 20px;
+  width: 50px; height: 13px;
+  background: var(--tape-sage, rgba(168,184,154,0.5));
+}
+.memory-form input, .memory-form textarea {
+  width: 100%;
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid rgba(141,110,99,0.25);
+  border-radius: 3px;
+  background: var(--cream);
+  color: var(--ink);
+  margin-bottom: 0.7rem;
+}
+.memory-form textarea { resize: vertical; min-height: 80px; }
+.memory-form label {
+  font-family: 'Caveat', cursive;
+  font-size: 0.88rem;
+  color: var(--soft-brown);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* ============ HAPPY THINGS ============ */
+.happy-tabs {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+.happy-tab {
+  background: none;
+  border: 1.5px solid rgba(141,110,99,0.25);
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.happy-tab.active {
+  background: var(--dusty-rose);
+  border-color: var(--dusty-rose);
+  color: var(--paper-white);
+}
+
+.happy-content {
+  display: none;
+  background: var(--paper-white);
+  border: 1px solid rgba(141,110,99,0.12);
+  border-radius: 2px;
+  padding: 1.2rem;
+  box-shadow: 2px 3px 12px rgba(90,55,30,0.07);
+  position: relative;
+}
+.happy-content.active { display: block; }
+.happy-content::after {
+  content: '';
+  position: absolute;
+  top: -9px; left: 18px;
+  width: 40px; height: 13px;
+  background: var(--tape-pink);
+}
+
+.happy-list { list-style: none; margin-bottom: 0.8rem; }
+.happy-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgba(141,110,99,0.12);
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.happy-list li button {
+  background: none; border: none;
+  color: rgba(141,110,99,0.4);
+  cursor: pointer; font-size: 0.85rem;
+  padding: 0.1rem 0.3rem;
+  transition: color 0.15s;
+}
+.happy-list li button:hover { color: var(--dusty-rose); }
+
+.happy-add {
+  display: flex;
+  gap: 0.5rem;
+}
+.happy-add input {
+  flex: 1;
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(141,110,99,0.25);
+  border-radius: 4px;
+  background: var(--cream);
+  color: var(--ink);
+}
+.happy-add button {
+  background: var(--sage);
+  color: var(--paper-white);
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.happy-add button:hover { background: #8ea57e; }
+
+/* ============ MOOD JOURNAL ============ */
+.mood-stickers {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.2rem 0;
+}
+.mood-sticker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  background: var(--paper-white);
+  box-shadow: 1px 2px 8px rgba(90,55,30,0.08);
+}
+.mood-sticker.selected {
+  border-color: var(--dusty-rose);
+  background: rgba(217,184,177,0.15);
+  transform: scale(1.08) rotate(-1deg);
+}
+.mood-sticker span:first-child { font-size: 1.8rem; }
+.mood-sticker span:last-child {
+  font-family: 'Caveat', cursive;
+  font-size: 0.75rem;
+  color: var(--soft-brown);
+}
+
+.mood-save-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.mood-history {
+  margin-top: 1.5rem;
+}
+.mood-history-title {
+  font-family: 'Caveat', cursive;
+  font-size: 0.85rem;
+  color: var(--soft-brown);
+  margin-bottom: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.mood-log {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.mood-log-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  background: var(--paper-white);
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  box-shadow: 1px 2px 6px rgba(90,55,30,0.07);
+}
+.mood-log-entry .emoji { font-size: 1.3rem; }
+.mood-log-entry .date {
+  font-family: 'Caveat', cursive;
+  font-size: 0.7rem;
+  color: var(--soft-brown);
+}
+
+/* ============ LOVE NOTES ============ */
+.notes-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--deep-brown);
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+.notes-wall {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.love-note {
+  background: #FEFAE6;
+  padding: 1rem 1.2rem;
+  border-radius: 2px;
+  box-shadow: 2px 3px 10px rgba(90,55,30,0.09);
+  position: relative;
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink);
+  transition: transform 0.2s;
+}
+.love-note:nth-child(odd) { transform: rotate(-0.8deg); }
+.love-note:nth-child(even) { transform: rotate(0.7deg); }
+.love-note:hover { transform: rotate(0deg) translateY(-2px); z-index: 3; }
+.love-note::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: 50%; transform: translateX(-50%);
+  width: 35px; height: 12px;
+}
+.love-note:nth-child(3n+1)::before { background: var(--tape-pink); }
+.love-note:nth-child(3n+2)::before { background: var(--tape-blue); }
+.love-note:nth-child(3n)::before { background: var(--tape-yellow); }
+.love-note .note-del {
+  position: absolute;
+  top: 0.5rem; right: 0.6rem;
+  background: none; border: none;
+  color: rgba(141,110,99,0.3);
+  cursor: pointer; font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.love-note .note-del:hover { color: var(--dusty-rose); }
+
+.add-note-area {
+  background: var(--paper-white);
+  border: 1.5px dashed rgba(141,110,99,0.3);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 0.8rem;
+}
+.add-note-area textarea {
+  width: 100%;
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid rgba(141,110,99,0.2);
+  border-radius: 3px;
+  background: var(--cream);
+  color: var(--ink);
+  resize: vertical;
+  min-height: 70px;
+  margin-bottom: 0.6rem;
+}
+.from-label {
+  font-family: 'Caveat', cursive;
+  font-size: 0.85rem;
+  color: var(--soft-brown);
+  display: block;
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+
+/* ============ SEND HUG ============ */
+.hug-btn {
+  display: block;
+  width: 100%;
+  padding: 1.4rem;
+  background: linear-gradient(135deg, var(--muted-lavender), #B8A8C8);
+  color: var(--paper-white);
+  border: none;
+  border-radius: 4px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  cursor: pointer;
+  box-shadow: 3px 5px 20px rgba(120,100,150,0.18);
+  transition: all 0.2s;
+}
+.hug-btn:hover { transform: translateY(-2px); }
+
+.hug-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(60,35,20,0.45);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.hug-modal.open { display: flex; }
+
+.hug-card {
+  background: var(--paper-white);
+  padding: 2.5rem 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 4px 8px 40px rgba(60,35,20,0.18);
+  border-radius: 2px;
+  position: relative;
+}
+.hug-card::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 50%; transform: translateX(-50%);
+  width: 70px; height: 14px;
+  background: var(--tape-blue);
+}
+.hug-illustration {
+  font-size: 4rem;
+  animation: hug-bounce 1.5s ease-in-out infinite;
+  display: block;
+  margin-bottom: 1rem;
+}
+@keyframes hug-bounce { 0%,100%{transform:scale(1) rotate(-3deg)} 50%{transform:scale(1.12) rotate(3deg)} }
+
+.hug-msg {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--deep-brown);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.hug-close {
+  background: none;
+  border: 1.5px solid rgba(141,110,99,0.3);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  color: var(--soft-brown);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.hug-close:hover { background: rgba(217,184,177,0.2); }
+
+/* ============ BAD DAY KIT ============ */
+.kit-tabs {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.kit-tab {
+  background: none;
+  border: 1.5px solid rgba(141,110,99,0.25);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.kit-tab.active {
+  background: var(--vintage-peach);
+  border-color: var(--vintage-peach);
+  color: var(--deep-brown);
+}
+.kit-content {
+  display: none;
+  background: var(--paper-white);
+  border: 1px solid rgba(141,110,99,0.12);
+  border-radius: 2px;
+  padding: 1.2rem;
+  box-shadow: 2px 3px 12px rgba(90,55,30,0.07);
+  position: relative;
+}
+.kit-content::after {
+  content: '';
+  position: absolute;
+  top: -9px; right: 20px;
+  width: 40px; height: 13px;
+  background: var(--tape-yellow);
+}
+.kit-content.active { display: block; }
+
+/* ============ SECRET EASTER EGG ============ */
+.secret-note {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(60,35,20,0.5);
+  z-index: 600;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.secret-note.open { display: flex; }
+.secret-inner {
+  background: #FEFAE6;
+  padding: 2.5rem 2rem;
+  max-width: 380px;
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: 4px 8px 40px rgba(60,35,20,0.22);
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: var(--ink);
+  line-height: 1.7;
+  transform: rotate(-1deg);
+}
+.secret-inner::before {
+  content: '★ secret ★';
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--soft-brown);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* ============ MISC ============ */
+.coffee-stain {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  border: 3px solid rgba(141,110,99,0.12);
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.note-paper {
+  background: var(--paper-white);
+  border: 1px solid rgba(141,110,99,0.12);
+  border-radius: 2px;
+  padding: 1.3rem 1.5rem;
+  box-shadow: 2px 4px 14px rgba(90,55,30,0.08);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.doodle {
+  font-size: 1rem;
+  opacity: 0.2;
+  position: absolute;
+  pointer-events: none;
+}
+
+input[type="file"] { display: none; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--deep-brown);
+  color: var(--paper-white);
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: 2px 4px 14px rgba(60,35,20,0.2);
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Memory detail modal */
+.mem-detail-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(60,35,20,0.5);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.mem-detail-modal.open { display: flex; }
+.mem-detail-card {
+  background: var(--paper-white);
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 4px 8px 40px rgba(60,35,20,0.18);
+  border-radius: 2px;
+  position: relative;
+  transform: rotate(-0.5deg);
+}
+.mem-detail-photo {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.mem-detail-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--deep-brown);
+  margin-bottom: 0.3rem;
+}
+.mem-detail-date {
+  font-family: 'Caveat', cursive;
+  font-size: 0.85rem;
+  color: var(--soft-brown);
+  margin-bottom: 0.7rem;
+}
+.mem-detail-desc {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+@media(min-width:480px){
+  .polaroid { width: calc(33.33% - 0.55rem); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <button onclick="scrollToSection('landing')" class="active">Home</button>
+  <button onclick="scrollToSection('period')">Little Calendar</button>
+  <button onclick="scrollToSection('comfort')">Comfort</button>
+  <button onclick="scrollToSection('envelopes')">Open When</button>
+  <button onclick="scrollToSection('memories')">Memories</button>
+  <button onclick="scrollToSection('happy')">Happy Things</button>
+  <button onclick="scrollToSection('mood')">Mood</button>
+  <button onclick="scrollToSection('notes')">Notes</button>
+  <button onclick="scrollToSection('hug')">Hug</button>
+  <button onclick="scrollToSection('kit')">Bad Day Kit</button>
+</nav>
+
+<!-- ========== LANDING ========== -->
+<section id="landing">
+  <div class="landing-doodle" style="top:8%;left:5%;transform:rotate(-15deg)">✦</div>
+  <div class="landing-doodle" style="top:15%;right:8%;transform:rotate(10deg)">♡</div>
+  <div class="landing-doodle" style="bottom:20%;left:7%;transform:rotate(20deg)">✿</div>
+  <div class="landing-doodle" style="bottom:25%;right:5%;transform:rotate(-8deg)">★</div>
+  <div class="landing-doodle" style="top:40%;left:2%;font-size:0.8rem">✦ ✦</div>
+
+  <div class="coffee-stain" style="top:12%;right:10%;"></div>
+
+  <span class="chapter-label">a little something made just for you</span>
+  <h1>Hi Beautiful ❤️</h1>
+  <p class="subtitle">This little corner of the internet belongs to you.</p>
+
+  <div class="welcome-note">
+    <p>
+      I made this because I wanted you to have somewhere to come when you need a little love — when I'm not right there beside you.<br><br>
+      It's not much. Just a little scrapbook of us, of you, of the things that make you feel better.<br><br>
+      You deserve all the softness in the world. I hope this feels like a tiny piece of that.
+    </p>
+    <div class="note-sig">— Alok ❤️</div>
+  </div>
+
+  <div class="landing-heart" id="landing-heart" onclick="heartClick()" title="Click me...">❤️</div>
+  <div id="heart-count-hint" style="font-family:'Caveat',cursive;font-size:0.8rem;color:rgba(141,110,99,0.45);margin-top:0.3rem;display:none">keep clicking...</div>
+
+  <div class="scroll-hint">↓ scroll through our little world</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== PERIOD JOURNAL ========== -->
+<section id="period">
+  <span class="chapter-label">your little calendar</span>
+  <h2 class="section-title">Moon & Tides</h2>
+  <p class="handwritten" style="margin-bottom:1.2rem;font-size:1rem">tracking the rhythm of your days ✦</p>
+
+  <div class="cycle-card">
+    <div class="doodle" style="bottom:0.7rem;right:1rem;font-size:1.5rem;transform:rotate(12deg)">✿</div>
+    <div class="period-input-row">
+      <div class="input-group">
+        <label>Last visitor started</label>
+        <input type="date" id="last-period" onchange="savePeriod()">
+      </div>
+      <div class="input-group">
+        <label>Avg cycle length (days)</label>
+        <input type="number" id="cycle-length" min="21" max="45" value="28" onchange="savePeriod()" style="width:100%">
+      </div>
+    </div>
+
+    <div class="cycle-grid" id="cycle-stats" style="margin-top:1.2rem">
+      <div class="cycle-stat">
+        <span class="label">Today is cycle day</span>
+        <span class="value" id="cycle-day">—</span>
+      </div>
+      <div class="cycle-stat">
+        <span class="label">Estimated next visitor</span>
+        <span class="value" id="next-period">—</span>
+      </div>
+      <div class="cycle-stat">
+        <span class="label">Days until she arrives</span>
+        <span class="value" id="days-until">—</span>
+      </div>
+      <div class="cycle-stat">
+        <span class="label">Avg cycle length</span>
+        <span class="value" id="cycle-length-disp">—</span>
+      </div>
+    </div>
+
+    <div class="cycle-phase-bar" style="margin-top:1.2rem">
+      <div class="cycle-phase-fill" id="cycle-progress" style="width:0%"></div>
+    </div>
+    <span class="phase-label" id="phase-name">update your dates above ↑</span>
+  </div>
+
+  <div class="note-paper" style="transform:rotate(0.6deg)">
+    <p class="handwritten" style="font-size:0.95rem;line-height:1.7">
+      This isn't a medical thing. It's just me keeping track so I can show up better for you —<br>
+      snacks ready, heat pad charged, zero expectations. 🌸
+    </p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== COMFORT MODE ========== -->
+<section id="comfort">
+  <span class="chapter-label">for those hard days</span>
+  <h2 class="section-title">Emergency Comfort</h2>
+  <p class="handwritten" style="margin-bottom:1.2rem;font-size:1rem">press whenever you need it, no questions asked ♡</p>
+
+  <button class="comfort-btn" onclick="openComfort()">I FEEL TERRIBLE</button>
+
+  <div class="note-paper" style="margin-top:1rem;transform:rotate(-0.5deg)">
+    <p class="handwritten" style="font-size:0.92rem;line-height:1.7">
+      You don't have to be okay. You don't have to explain why. Just press the button and let me take care of the rest.
+    </p>
+  </div>
+</section>
+
+<!-- comfort modal -->
+<div class="comfort-modal" id="comfort-modal">
+  <div class="comfort-card">
+    <button class="close-modal" onclick="closeComfort()">✕</button>
+    <div class="comfort-msg" id="comfort-message">Loading...</div>
+    <ul class="checklist" id="comfort-checklist">
+      <li onclick="toggleCheck(this)"><span class="check-box"></span>Drink some water 💧</li>
+      <li onclick="toggleCheck(this)"><span class="check-box"></span>Eat something small 🍪</li>
+      <li onclick="toggleCheck(this)"><span class="check-box"></span>Put on your heat pad 🌡️</li>
+      <li onclick="toggleCheck(this)"><span class="check-box"></span>Stretch a little 🌿</li>
+      <li onclick="toggleCheck(this)"><span class="check-box"></span>Rest, properly rest 🛌</li>
+      <li onclick="toggleCheck(this)"><span class="check-box"></span>Message Alok 📱</li>
+    </ul>
+    <button class="comfort-new-msg-btn" onclick="newComfortMsg()">✦ another message ✦</button>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ========== OPEN WHEN ========== -->
+<section id="envelopes">
+  <span class="chapter-label">little letters</span>
+  <h2 class="section-title">Open When...</h2>
+  <p class="handwritten" style="margin-bottom:1.2rem;font-size:1rem">tap an envelope when you need it ✉️</p>
+
+  <div class="envelopes-grid" id="envelopes-grid"></div>
+</section>
+
+<!-- letter modal -->
+<div class="letter-modal" id="letter-modal">
+  <div class="letter-card">
+    <button class="close-modal" onclick="closeLetter()">✕</button>
+    <div class="letter-title" id="letter-modal-title"></div>
+    <div class="letter-body" id="letter-modal-body"></div>
+    <div class="letter-sig">— Alok ❤️</div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ========== MEMORY VAULT ========== -->
+<section id="memories">
+  <span class="chapter-label">our story</span>
+  <h2 class="section-title">Memory Vault</h2>
+  <p class="handwritten" style="margin-bottom:1.2rem;font-size:1rem">every moment we don't want to forget 📷</p>
+
+  <div class="polaroid-wall" id="polaroid-wall"></div>
+
+  <button class="add-memory-btn" onclick="toggleMemoryForm()">+ pin a new memory</button>
+
+  <div class="memory-form" id="memory-form">
+    <label>memory title</label>
+    <input type="text" id="mem-title" placeholder="The day we...">
+    <label>date</label>
+    <input type="date" id="mem-date">
+    <label>a little note about it</label>
+    <textarea id="mem-desc" placeholder="What happened, how it felt..."></textarea>
+    <label>photo (optional)</label>
+    <button type="button" onclick="document.getElementById('mem-photo-input').click()" style="background:var(--cream);border:1px dashed rgba(141,110,99,0.3);padding:0.5rem 1rem;border-radius:4px;font-family:'Caveat',cursive;cursor:pointer;margin-bottom:0.7rem;color:var(--soft-brown);">📷 choose a photo</button>
+    <input type="file" id="mem-photo-input" accept="image/*" onchange="previewMemPhoto(this)">
+    <div id="mem-photo-preview" style="margin-bottom:0.7rem;"></div>
+    <div style="display:flex;gap:0.5rem;">
+      <button class="btn-save" onclick="saveMemory()">pin it ✦</button>
+      <button onclick="toggleMemoryForm()" style="background:none;border:1.5px solid rgba(141,110,99,0.3);padding:0.55rem 1rem;border-radius:20px;font-family:'Caveat',cursive;font-size:0.95rem;color:var(--soft-brown);cursor:pointer;">cancel</button>
+    </div>
+  </div>
+</section>
+
+<!-- memory detail modal -->
+<div class="mem-detail-modal" id="mem-detail-modal">
+  <div class="mem-detail-card">
+    <button class="close-modal" onclick="document.getElementById('mem-detail-modal').classList.remove('open')">✕</button>
+    <div class="tape-strip"></div>
+    <img id="mem-detail-photo" class="mem-detail-photo" style="display:none" alt="">
+    <div class="mem-detail-title" id="mem-detail-title"></div>
+    <div class="mem-detail-date" id="mem-detail-date"></div>
+    <div class="mem-detail-desc" id="mem-detail-desc"></div>
+    <button onclick="deleteMemory()" style="margin-top:1rem;background:none;border:none;font-family:'Caveat',cursive;font-size:0.85rem;color:rgba(141,110,99,0.5);cursor:pointer;text-decoration:underline;">remove this memory</button>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ========== HAPPY THINGS ========== -->
+<section id="happy">
+  <span class="chapter-label">the good stuff</span>
+  <h2 class="section-title">Happy Things</h2>
+  <p class="handwritten" style="margin-bottom:1.2rem;font-size:1rem">all the little things you love 🌸</p>
+
+  <div class="happy-tabs" id="happy-tabs"></div>
+  <div id="happy-panels"></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== MOOD JOURNAL ========== -->
+<section id="mood">
+  <span class="chapter-label">how are you feeling?</span>
+  <h2 class="section-title">Mood Journal</h2>
+  <p class="handwritten" style="margin-bottom:0.5rem;font-size:1rem">tap how you're feeling today ✦</p>
+
+  <div class="mood-stickers" id="mood-stickers"></div>
+
+  <button class="btn-save mood-save-btn" onclick="saveMood()">save today's mood ✦</button>
+
+  <div class="mood-history">
+    <div class="mood-history-title">recent moods</div>
+    <div class="mood-log" id="mood-log"></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== LOVE NOTES ========== -->
+<section id="notes">
+  <span class="chapter-label">little reminders</span>
+  <h2 class="section-title">From Alok ❤️</h2>
+  <div class="notes-header">things I want you to remember</div>
+
+  <div class="notes-wall" id="notes-wall"></div>
+
+  <div class="add-note-area">
+    <span class="from-label">write a new note from Alok ↓</span>
+    <textarea id="new-note-text" placeholder="Drink water. I love you. Don't forget to eat..."></textarea>
+    <button class="btn-save" onclick="addNote()">pin this note ✦</button>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ========== SEND HUG ========== -->
+<section id="hug">
+  <span class="chapter-label">reach through the screen</span>
+  <h2 class="section-title">Send Me A Hug</h2>
+  <p class="handwritten" style="margin-bottom:1.2rem;font-size:1rem">whenever you need one, it's here ♡</p>
+
+  <button class="hug-btn" onclick="openHug()">Send Me A Hug 🤗</button>
+</section>
+
+<!-- hug modal -->
+<div class="hug-modal" id="hug-modal">
+  <div class="hug-card">
+    <button class="close-modal" onclick="document.getElementById('hug-modal').classList.remove('open')">✕</button>
+    <span class="hug-illustration">🤗</span>
+    <div class="hug-msg" id="hug-message"></div>
+    <button class="hug-close" onclick="document.getElementById('hug-modal').classList.remove('open')">thank you ♡</button>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ========== BAD DAY KIT ========== -->
+<section id="kit">
+  <span class="chapter-label">survival kit</span>
+  <h2 class="section-title">Bad Day Survival Kit</h2>
+  <p class="handwritten" style="margin-bottom:1.2rem;font-size:1rem">things that always help ✦</p>
+
+  <div class="kit-tabs" id="kit-tabs"></div>
+  <div id="kit-panels"></div>
+</section>
+
+<!-- ========== SECRET ========== -->
+<div class="secret-note" id="secret-modal">
+  <div class="secret-inner" id="secret-inner">
+    <button onclick="document.getElementById('secret-modal').classList.remove('open')" style="position:absolute;top:0.7rem;right:0.9rem;background:none;border:none;cursor:pointer;color:var(--soft-brown);font-size:1.1rem;">✕</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- spacer -->
+<div style="height:3rem"></div>
+
+<script>
+// =========================================================
+// DATA
+// =========================================================
+const COMFORT_MESSAGES = [
+  "I know today is hard. You don't have to pretend otherwise.",
+  "You are doing so much better than you think.",
+  "You don't need to be productive today. Just breathe.",
+  "Be kind to yourself — you deserve the same kindness you give everyone else.",
+  "If I could take the cramps away I would, in a heartbeat.",
+  "I'm proud of you for getting through this.",
+  "I love you more than any words on a screen can say.",
+  "You are so strong, even on the days it doesn't feel that way.",
+  "Take up all the space you need today.",
+  "Rest is not weakness. Rest is love — for yourself.",
+  "You don't have to earn softness today.",
+  "I am thinking about you right now. Always.",
+  "The hard part won't last forever. I promise.",
+  "You're allowed to feel everything you're feeling.",
+  "Some days are just hard. That's okay.",
+  "I would bring you snacks and sit with you if I could.",
+  "You are the strongest person I know.",
+  "This will pass. I'll be here when it does.",
+  "Being gentle with yourself is not giving up.",
+  "You are allowed to cancel plans and stay in bed.",
+  "You are not being dramatic. Your pain is real.",
+  "Take your heat pad. Take your snacks. Take your rest.",
+  "I love you on your best days and especially on your worst.",
+  "You don't have to explain how you feel. Just feel it.",
+  "I wish I could hug you right now.",
+  "Your body is doing a lot. Be patient with it.",
+  "You are loved so deeply, even on the hardest days.",
+  "Nothing is more important right now than you feeling okay.",
+  "I'm here. Even when I'm not physically there, I'm here.",
+  "You make everything better just by being in the world.",
+  "One hour at a time. You don't have to do more than that.",
+  "The most important thing today is that you're kind to yourself.",
+  "You are doing great. Seriously.",
+  "I see how hard you try. I appreciate every bit of it.",
+  "You are not alone in this. Not for a single second.",
+  "Some days are for doing. Today can be for being.",
+  "Your feelings make complete sense to me.",
+  "I love you in a way that doesn't require you to be okay.",
+  "The world will wait. Rest first.",
+  "You deserve the softest, warmest, most cozy version of today.",
+  "If I could fast-forward through the hard part for you, I would.",
+  "You are my favourite person, especially on your hard days.",
+  "Pain doesn't make you weak. Carrying it does make you brave.",
+  "I will never need you to be more than you are right now.",
+  "Breathe in. You've survived every hard day until now.",
+  "You are enough. More than enough. Always.",
+  "Today doesn't have to look like anything. Just exist.",
+  "I am so grateful you're mine.",
+  "You deserve every good thing that is coming your way.",
+  "Even on hard days, the love between us is still there, whole.",
+  "I would drop everything to sit with you right now.",
+  "You are irreplaceable. Completely, utterly irreplaceable.",
+  "Being tender with yourself is one of the bravest things.",
+  "You don't owe anyone strength today.",
+  "It's okay to cry. Let it out.",
+  "You are safe. You are loved. You will be okay.",
+  "I would choose you, on every one of these hard days.",
+  "Nothing about you is too much. You are just right.",
+  "On your worst days, you are still my favourite person.",
+  "Close your eyes for a second. I'm sending you all my love.",
+  "Please drink some water. I'm saying it nicely. 💧",
+  "I love the way your mind works, even when it's tired.",
+  "You carry so much. Put some of it down today.",
+  "I'm so glad you exist. I'm so glad I found you.",
+  "Eat something. Even something small. You need it.",
+  "You don't have to be strong for me. Just be yourself.",
+  "I love you without conditions or expectations.",
+  "Your comfort matters to me more than almost anything.",
+  "Today can be small. Small is enough.",
+  "I miss you when I'm not with you. I love you always.",
+  "You are worth all the care in the world.",
+  "I made this for you because I wanted you to feel loved at 2am.",
+  "The next good moment is coming. I know it.",
+  "You have gotten through every hard thing before. You'll get through this.",
+  "I love your voice, your laugh, the way you exist.",
+  "You don't have to do anything today. Just exist.",
+  "If I were there, I'd be rubbing your back right now.",
+  "I see you trying. I see you making it. I love you.",
+  "You are gentle and strong at the same time. That's rare.",
+  "It's okay to take up space. It's okay to need things.",
+  "I would rewatch your comfort show with you all night if I could.",
+  "You are exactly who I want to be with. Every day.",
+  "Your feelings are valid. Every single one of them.",
+  "Even on your worst days, you are my best thing.",
+  "I hope this page feels like a tiny hug from me.",
+  "You don't need to have it together today. I have enough together for both of us.",
+  "Rest. Heal. I'll be here when you feel better.",
+  "I love you when you're messy and tired and real.",
+  "Please eat your favourite snack today. You deserve it.",
+  "I think about you all the time. I hope you know that.",
+  "You make the world softer just by being in it.",
+  "I love you. I love you. I love you.",
+  "Today was hard. Tomorrow might still be hard. But I'm not going anywhere.",
+  "I'm proud to be yours.",
+  "Come back to this page whenever you need to. It'll always be here.",
+  "You are my home.",
+  "When in doubt, nap. Then drink water. Then nap again.",
+  "I made this page so that even when you're alone, you aren't.",
+  "You are my favourite human being on this entire planet.",
+];
+
+const OPEN_WHEN_LETTERS = [
+  {
+    when: "You're Sad",
+    emoji: "🌧️",
+    body: `Oh love. I know this one.\n\nSadness has a way of making everything feel like it has always been this way and always will be. But it won't. I promise you it won't.\n\nYou are allowed to be sad. You don't have to explain it or rationalize it or make it neat. Just let it be what it is, and know that I am somewhere out there, thinking about you, wishing I could sit beside you and not say anything at all.\n\nThe world is still good. You are still good. This is just a grey day passing through.\n\nI love you in all your colours — even the grey ones.`
+  },
+  {
+    when: "You're Angry",
+    emoji: "🔥",
+    body: `Good. Be angry.\n\nYou have every right to feel whatever you're feeling, and I would never want you to swallow it down or be small about it.\n\nIf the anger is at me — I'm sorry. I mean that. Tell me when you're ready.\n\nIf it's at something else — let it out. Scream into a pillow. Take a long walk. Cry if you need to. The anger usually has something underneath it, something that hurts. When you're ready to look at that part, I'm here.\n\nI love your fire. Even when it's messy.`
+  },
+  {
+    when: "You're Stressed",
+    emoji: "🌀",
+    body: `Okay. Stop for a second.\n\nJust one second. Breathe.\n\nEverything on your list will still be there after you breathe. The thing about stress is that it tricks you into thinking you can think your way out of it — but you can't. You have to breathe your way out.\n\nYou are more capable than you realise. You have handled hard things before and come out the other side. This is also something you will handle.\n\nBut not right this second. Right this second, just breathe.\n\nI believe in you so much it's almost embarrassing.`
+  },
+  {
+    when: "You Miss Me",
+    emoji: "💌",
+    body: `I miss you too. So much it's silly.\n\nI think about you at random moments — when something funny happens, when I see something beautiful, when it's quiet.\n\nYou are always somehow nearby in my mind.\n\nI know the missing can be hard. But I think it also means something good — that what we have is worth missing. That you matter to me in a way that doesn't disappear when we're apart.\n\nUntil I can be with you again, I hope this page feels like a small piece of me left just for you.\n\nI love you. Come back to me soon.`
+  },
+  {
+    when: "You Feel Alone",
+    emoji: "🕯️",
+    body: `You are not alone. I need you to hear that.\n\nEven in the quietest room, at the strangest hour, when the world feels far away — you are not alone.\n\nI made this page so that some version of me would always be here when you needed it. Right now, in this moment, I am rooting for you. I am thinking about you. I am loving you.\n\nYou carry more people with you than you realise — people who think about you, who would show up for you, who are glad you exist.\n\nI am one of those people. Always.`
+  },
+  {
+    when: "You Can't Sleep",
+    emoji: "🌙",
+    body: `Hey. It's okay. Not every night belongs to sleep.\n\nSome nights are for lying there and letting your brain do its thing. Some nights are for being quietly awake with yourself.\n\nYou don't have to fix the sleeplessness. Just let it be. Your body knows what it's doing.\n\nIf your mind is racing, try this: think of one thing you're looking forward to. Just one small, real thing. Hold onto it.\n\nI hope sleep finds you soon, gently. And if it doesn't, just know that somewhere, I'm probably also awake, probably thinking about you.`
+  },
+  {
+    when: "You Need Motivation",
+    emoji: "✨",
+    body: `You have already done hard things. So many hard things.\n\nAnd you're still here. Still trying. Still showing up, even when it costs you something.\n\nThat is not nothing. That is actually everything.\n\nI don't need you to be a machine. I don't need you to hustle or grind or perform productivity. I just need you to keep going — at whatever pace is honest for you right now.\n\nOne step. Then another. That's it.\n\nI believe in the version of you that hasn't figured it all out yet. She's doing great.`
+  },
+  {
+    when: "You Feel Insecure",
+    emoji: "🪞",
+    body: `I need to tell you something true.\n\nYou are extraordinary. Not in a general, vague way — specifically, actually extraordinary.\n\nThe way you think. The way you love. The way you move through the world carrying so much and still choosing softness.\n\nI know insecurity can make you see yourself in the worst light. I wish I could show you yourself through my eyes, even for a minute.\n\nYou would be shocked.\n\nYou are beautiful. You are enough. You are more than the small thoughts telling you otherwise.\n\nI mean every word.`
+  },
+  {
+    when: "You Need A Hug",
+    emoji: "🤗",
+    body: `Come here.\n\n[imagine very long arms]\n\nI've got you.\n\nI know a page can't do what a real hug does. But I want you to know that if I could be there right now, I would hold on for as long as you needed. I wouldn't let go first.\n\nYou deserve to be held. You deserve warmth and closeness and someone who makes you feel safe.\n\nScroll up and press "Send Me A Hug" if you want one. It's not the real thing but it's made with the same love.\n\nI love you. Come find me when you can.`
+  },
+  {
+    when: "Things Feel Too Much",
+    emoji: "🌊",
+    body: `It's okay. You don't have to hold all of this.\n\nYou are allowed to put some of it down. To say "not today" to at least one thing. To simplify, to shrink the to-do list, to let something wait.\n\nWhen things feel too much, it usually means you've been doing too much for too long without enough softness in between.\n\nToday is for softness. Not for fixing everything or keeping up or being fine.\n\nBreath. Water. Blanket. That's the whole list.\n\nI love you. I'm here. Nothing is as urgent as taking care of yourself right now.`
+  },
+];
+
+const HUG_MESSAGES = [
+  "Here it is. A hug from across all the distance. I made it extra tight.",
+  "I'm squeezing you so hard right now. Can you feel it?",
+  "This hug comes with no expiry date. Use it whenever.",
+  "I would never let go first. Not even a little bit.",
+  "You are so loved. So incredibly, completely loved.",
+  "This is me, holding you, for as long as you need.",
+  "I hope this feels like something warm and safe and mine.",
+  "You deserve to be held. This is me holding you.",
+  "I made this just so you'd have a hug waiting when you needed one.",
+  "All my love, compressed into one very long digital hug.",
+];
+
+const SECRET_NOTES = [
+  "I fell in love with you so quietly I almost didn't notice. And then I noticed everything.",
+  "You are the thing I'm most grateful for. On every ordinary day.",
+  "I don't know who I would be without knowing you. I don't want to find out.",
+  "I think about you in moments that have nothing to do with you. That's how I know.",
+  "Every soft, good thing I have is better because you're in my life.",
+];
+
+const KIT_DEFAULTS = {
+  "Comfort Foods": ["Maggi", "Chips & salsa", "Ice cream", "Hot chocolate", "Your favourite biscuits"],
+  "Comfort Movies": ["10 Things I Hate About You", "Legally Blonde", "Notting Hill", "Pride & Prejudice", "The Holiday"],
+  "Comfort Songs": ["your comfort playlist songs here", "and more..."],
+  "Things That Help": ["Long hot shower", "Heating pad", "Lying down in the dark", "Crying it out", "Talking to Alok"],
+  "People To Contact": ["Alok ❤️", "Your best friend", "Your mum"],
+  "Reasons To Keep Going": ["Things always change", "You are deeply loved", "The best moments haven't happened yet", "Alok is very annoying without you around", "You matter more than you know"],
+};
+
+const HAPPY_CATEGORIES = ["Favourite Songs", "Favourite Movies", "Favourite Shows", "Favourite Snacks", "Favourite Places", "Favourite Photos"];
+
+const MOODS = [
+  { emoji: "😊", label: "Happy" },
+  { emoji: "😌", label: "Calm" },
+  { emoji: "🥲", label: "Emotional" },
+  { emoji: "😔", label: "Sad" },
+  { emoji: "😤", label: "Irritated" },
+  { emoji: "😴", label: "Tired" },
+];
+
+const DEFAULT_NOTES = [
+  "Drink water, please. I'm watching.",
+  "Don't skip meals. I mean it.",
+  "You're prettier than you think. By a lot.",
+  "Take breaks. You are not a machine.",
+  "I love you. I love you. I love you.",
+  "You are doing so well.",
+  "Text me whenever. Even for no reason.",
+  "You deserve good things. Let yourself have them.",
+];
+
+// =========================================================
+// HELPERS
+// =========================================================
+function ls(key, val) {
+  if (val === undefined) {
+    try { return JSON.parse(localStorage.getItem(key)); } catch { return null; }
+  }
+  localStorage.setItem(key, JSON.stringify(val));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+}
+
+// nav highlight on scroll
+const sectionIds = ['landing','period','comfort','envelopes','memories','happy','mood','notes','hug','kit'];
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = sectionIds.indexOf(e.target.id);
+      document.querySelectorAll('nav button').forEach((b,i) => b.classList.toggle('active', i===idx));
+    }
+  });
+}, { threshold: 0.3 });
+window.addEventListener('DOMContentLoaded', () => sectionIds.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+}));
+
+// =========================================================
+// LANDING / EASTER EGG
+// =========================================================
+let heartClicks = 0;
+function heartClick() {
+  heartClicks++;
+  const hint = document.getElementById('heart-count-hint');
+  if (heartClicks >= 2) hint.style.display = 'block';
+  if (heartClicks >= 5) {
+    hint.style.display = 'none';
+    heartClicks = 0;
+    const notes = SECRET_NOTES;
+    const msg = notes[Math.floor(Math.random() * notes.length)];
+    document.getElementById('secret-inner').innerHTML = `
+      <button onclick="document.getElementById('secret-modal').classList.remove('open')" style="position:absolute;top:0.7rem;right:0.9rem;background:none;border:none;cursor:pointer;color:var(--soft-brown);font-size:1.1rem;">✕</button>
+      <div style="font-size:2rem;margin-bottom:1rem">✦</div>
+      <div style="font-style:italic">"${msg}"</div>
+      <div style="margin-top:1.2rem;font-size:0.85rem;color:var(--soft-brown)">— Alok</div>
+    `;
+    document.getElementById('secret-modal').classList.add('open');
+  }
+}
+
+// =========================================================
+// PERIOD TRACKER
+// =========================================================
+function savePeriod() {
+  const lastDate = document.getElementById('last-period').value;
+  const cycleLen = parseInt(document.getElementById('cycle-length').value) || 28;
+  ls('period-data', { lastDate, cycleLen });
+  updateCycleDisplay(lastDate, cycleLen);
+}
+
+function updateCycleDisplay(lastDate, cycleLen) {
+  if (!lastDate) return;
+  const last = new Date(lastDate);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const diffDays = Math.floor((today - last) / 86400000);
+  const cycleDay = (diffDays % cycleLen) + 1;
+  const daysLeft = cycleLen - cycleDay;
+  const nextDate = new Date(last);
+  nextDate.setDate(nextDate.getDate() + Math.ceil(diffDays / cycleLen) * cycleLen);
+
+  document.getElementById('cycle-day').textContent = cycleDay;
+  document.getElementById('next-period').textContent = nextDate.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+  document.getElementById('days-until').textContent = daysLeft + ' days';
+  document.getElementById('cycle-length-disp').textContent = cycleLen + ' days';
+
+  const pct = Math.min((cycleDay / cycleLen) * 100, 100);
+  document.getElementById('cycle-progress').style.width = pct + '%';
+
+  let phase = '';
+  const pctVal = cycleDay / cycleLen;
+  if (pctVal < 0.2) phase = '🌸 new beginning';
+  else if (pctVal < 0.45) phase = '🌼 building days';
+  else if (pctVal < 0.6) phase = '🌺 peak energy';
+  else if (pctVal < 0.8) phase = '🍂 winding down';
+  else phase = '🌙 almost time';
+  document.getElementById('phase-name').textContent = phase;
+}
+
+function loadPeriod() {
+  const data = ls('period-data');
+  if (data) {
+    document.getElementById('last-period').value = data.lastDate;
+    document.getElementById('cycle-length').value = data.cycleLen;
+    updateCycleDisplay(data.lastDate, data.cycleLen);
+  }
+}
+
+// =========================================================
+// COMFORT
+// =========================================================
+function openComfort() {
+  newComfortMsg();
+  document.querySelectorAll('#comfort-checklist li').forEach(li => li.classList.remove('done'));
+  document.querySelectorAll('#comfort-checklist .check-box').forEach(cb => cb.textContent = '');
+  document.getElementById('comfort-modal').classList.add('open');
+}
+function closeComfort() { document.getElementById('comfort-modal').classList.remove('open'); }
+function newComfortMsg() {
+  const msg = COMFORT_MESSAGES[Math.floor(Math.random() * COMFORT_MESSAGES.length)];
+  document.getElementById('comfort-message').textContent = msg;
+}
+function toggleCheck(li) {
+  li.classList.toggle('done');
+  li.querySelector('.check-box').textContent = li.classList.contains('done') ? '✓' : '';
+}
+
+// =========================================================
+// OPEN WHEN
+// =========================================================
+function buildEnvelopes() {
+  const grid = document.getElementById('envelopes-grid');
+  OPEN_WHEN_LETTERS.forEach((letter, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'envelope-wrap';
+    wrap.innerHTML = `
+      <div class="envelope">
+        <div class="envelope-body">
+          <span class="envelope-heart">❤️</span>
+          <div class="envelope-label">Open When<br>${letter.when}</div>
+        </div>
+      </div>
+    `;
+    wrap.onclick = () => openLetter(i);
+    grid.appendChild(wrap);
+  });
+}
+
+function openLetter(i) {
+  const l = OPEN_WHEN_LETTERS[i];
+  document.getElementById('letter-modal-title').textContent = 'Open When ' + l.when;
+  document.getElementById('letter-modal-body').innerHTML = l.body.replace(/\n/g, '<br>');
+  document.getElementById('letter-modal').classList.add('open');
+}
+function closeLetter() { document.getElementById('letter-modal').classList.remove('open'); }
+
+// =========================================================
+// MEMORY VAULT
+// =========================================================
+let currentMemIdx = null;
+let memPhotoData = null;
+
+function loadMemories() {
+  const memories = ls('memories') || [];
+  renderPolaroids(memories);
+}
+
+function renderPolaroids(memories) {
+  const wall = document.getElementById('polaroid-wall');
+  wall.innerHTML = '';
+  memories.forEach((mem, i) => {
+    const pol = document.createElement('div');
+    pol.className = 'polaroid';
+    pol.innerHTML = `
+      <div class="tape-strip"></div>
+      <div class="polaroid-photo">
+        ${mem.photo ? `<img src="${mem.photo}" alt="">` : `<div class="polaroid-photo-placeholder">📷<span>add a photo</span></div>`}
+      </div>
+      <div class="polaroid-caption">${mem.title || 'untitled'}</div>
+      <div class="polaroid-date">${mem.date ? new Date(mem.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : ''}</div>
+    `;
+    pol.onclick = () => openMemDetail(i);
+    wall.appendChild(pol);
+  });
+}
+
+function toggleMemoryForm() {
+  const f = document.getElementById('memory-form');
+  f.classList.toggle('open');
+  memPhotoData = null;
+  document.getElementById('mem-photo-preview').innerHTML = '';
+}
+
+function previewMemPhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    memPhotoData = e.target.result;
+    document.getElementById('mem-photo-preview').innerHTML = `<img src="${memPhotoData}" style="width:100%;max-height:120px;object-fit:cover;border-radius:2px;">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveMemory() {
+  const title = document.getElementById('mem-title').value.trim();
+  const date = document.getElementById('mem-date').value;
+  const desc = document.getElementById('mem-desc').value.trim();
+  if (!title) { showToast('add a title first ✦'); return; }
+  const memories = ls('memories') || [];
+  memories.unshift({ title, date, desc, photo: memPhotoData });
+  ls('memories', memories);
+  document.getElementById('mem-title').value = '';
+  document.getElementById('mem-date').value = '';
+  document.getElementById('mem-desc').value = '';
+  document.getElementById('mem-photo-preview').innerHTML = '';
+  memPhotoData = null;
+  toggleMemoryForm();
+  renderPolaroids(memories);
+  showToast('memory pinned ✦');
+}
+
+function openMemDetail(i) {
+  const memories = ls('memories') || [];
+  const mem = memories[i];
+  currentMemIdx = i;
+  const ph = document.getElementById('mem-detail-photo');
+  if (mem.photo) { ph.src = mem.photo; ph.style.display = 'block'; }
+  else { ph.style.display = 'none'; }
+  document.getElementById('mem-detail-title').textContent = mem.title;
+  document.getElementById('mem-detail-date').textContent = mem.date ? new Date(mem.date).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+  document.getElementById('mem-detail-desc').textContent = mem.desc;
+  document.getElementById('mem-detail-modal').classList.add('open');
+}
+
+function deleteMemory() {
+  if (currentMemIdx === null) return;
+  const memories = ls('memories') || [];
+  memories.splice(currentMemIdx, 1);
+  ls('memories', memories);
+  renderPolaroids(memories);
+  document.getElementById('mem-detail-modal').classList.remove('open');
+  showToast('memory removed');
+}
+
+// =========================================================
+// HAPPY THINGS
+// =========================================================
+function buildHappyThings() {
+  const tabs = document.getElementById('happy-tabs');
+  const panels = document.getElementById('happy-panels');
+  HAPPY_CATEGORIES.forEach((cat, i) => {
+    const tab = document.createElement('button');
+    tab.className = 'happy-tab' + (i === 0 ? ' active' : '');
+    tab.textContent = cat;
+    tab.onclick = () => switchHappyTab(i);
+    tabs.appendChild(tab);
+
+    const panel = document.createElement('div');
+    panel.className = 'happy-content' + (i === 0 ? ' active' : '');
+    panel.id = 'happy-panel-' + i;
+    panel.innerHTML = `
+      <ul class="happy-list" id="happy-list-${i}"></ul>
+      <div class="happy-add">
+        <input type="text" id="happy-input-${i}" placeholder="add something...">
+        <button onclick="addHappyItem(${i})">add ✦</button>
+      </div>
+    `;
+    panels.appendChild(panel);
+    renderHappyList(i);
+  });
+}
+
+function switchHappyTab(i) {
+  document.querySelectorAll('.happy-tab').forEach((t,j) => t.classList.toggle('active', j===i));
+  document.querySelectorAll('.happy-content').forEach((p,j) => p.classList.toggle('active', j===i));
+}
+
+function renderHappyList(i) {
+  const items = ls('happy-' + i) || [];
+  const ul = document.getElementById('happy-list-' + i);
+  ul.innerHTML = items.map((item, j) => `
+    <li><span>${item}</span><button onclick="removeHappyItem(${i},${j})">✕</button></li>
+  `).join('');
+}
+
+function addHappyItem(i) {
+  const input = document.getElementById('happy-input-' + i);
+  const val = input.value.trim();
+  if (!val) return;
+  const items = ls('happy-' + i) || [];
+  items.push(val);
+  ls('happy-' + i, items);
+  input.value = '';
+  renderHappyList(i);
+}
+
+function removeHappyItem(i, j) {
+  const items = ls('happy-' + i) || [];
+  items.splice(j, 1);
+  ls('happy-' + i, items);
+  renderHappyList(i);
+}
+
+// =========================================================
+// MOOD JOURNAL
+// =========================================================
+let selectedMood = null;
+
+function buildMoodStickers() {
+  const container = document.getElementById('mood-stickers');
+  MOODS.forEach((mood, i) => {
+    const div = document.createElement('div');
+    div.className = 'mood-sticker';
+    div.innerHTML = `<span>${mood.emoji}</span><span>${mood.label}</span>`;
+    div.onclick = () => {
+      document.querySelectorAll('.mood-sticker').forEach(s => s.classList.remove('selected'));
+      div.classList.add('selected');
+      selectedMood = mood;
+    };
+    container.appendChild(div);
+  });
+}
+
+function saveMood() {
+  if (!selectedMood) { showToast('pick a mood first ✦'); return; }
+  const moods = ls('moods') || [];
+  const today = new Date().toISOString().split('T')[0];
+  const existing = moods.findIndex(m => m.date === today);
+  if (existing >= 0) moods[existing] = { date: today, emoji: selectedMood.emoji, label: selectedMood.label };
+  else moods.unshift({ date: today, emoji: selectedMood.emoji, label: selectedMood.label });
+  ls('moods', moods.slice(0, 30));
+  renderMoodLog();
+  showToast('mood saved ✦');
+  document.querySelectorAll('.mood-sticker').forEach(s => s.classList.remove('selected'));
+  selectedMood = null;
+}
+
+function renderMoodLog() {
+  const moods = ls('moods') || [];
+  const log = document.getElementById('mood-log');
+  log.innerHTML = moods.slice(0, 14).map(m => `
+    <div class="mood-log-entry">
+      <span class="emoji">${m.emoji}</span>
+      <span class="date">${new Date(m.date).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span>
+    </div>
+  `).join('');
+}
+
+// =========================================================
+// LOVE NOTES
+// =========================================================
+function loadNotes() {
+  let notes = ls('love-notes');
+  if (!notes) {
+    notes = DEFAULT_NOTES;
+    ls('love-notes', notes);
+  }
+  renderNotes(notes);
+}
+
+function renderNotes(notes) {
+  const wall = document.getElementById('notes-wall');
+  wall.innerHTML = notes.map((note, i) => `
+    <div class="love-note">
+      <button class="note-del" onclick="deleteNote(${i})">✕</button>
+      ${note}
+    </div>
+  `).join('');
+}
+
+function addNote() {
+  const val = document.getElementById('new-note-text').value.trim();
+  if (!val) return;
+  const notes = ls('love-notes') || [];
+  notes.unshift(val);
+  ls('love-notes', notes);
+  document.getElementById('new-note-text').value = '';
+  renderNotes(notes);
+  showToast('note pinned ✦');
+}
+
+function deleteNote(i) {
+  const notes = ls('love-notes') || [];
+  notes.splice(i, 1);
+  ls('love-notes', notes);
+  renderNotes(notes);
+}
+
+// =========================================================
+// HUG
+// =========================================================
+function openHug() {
+  const msg = HUG_MESSAGES[Math.floor(Math.random() * HUG_MESSAGES.length)];
+  document.getElementById('hug-message').textContent = msg;
+  document.getElementById('hug-modal').classList.add('open');
+}
+
+// =========================================================
+// BAD DAY KIT
+// =========================================================
+function buildKit() {
+  const tabs = document.getElementById('kit-tabs');
+  const panels = document.getElementById('kit-panels');
+  const categories = Object.keys(KIT_DEFAULTS);
+  categories.forEach((cat, i) => {
+    const tab = document.createElement('button');
+    tab.className = 'kit-tab' + (i === 0 ? ' active' : '');
+    tab.textContent = cat;
+    tab.onclick = () => switchKitTab(i);
+    tabs.appendChild(tab);
+
+    if (!ls('kit-' + i)) ls('kit-' + i, KIT_DEFAULTS[cat]);
+
+    const panel = document.createElement('div');
+    panel.className = 'kit-content' + (i === 0 ? ' active' : '');
+    panel.id = 'kit-panel-' + i;
+    panel.innerHTML = `
+      <ul class="happy-list" id="kit-list-${i}"></ul>
+      <div class="happy-add">
+        <input type="text" id="kit-input-${i}" placeholder="add something...">
+        <button onclick="addKitItem(${i})">add ✦</button>
+      </div>
+    `;
+    panels.appendChild(panel);
+    renderKitList(i);
+  });
+}
+
+function switchKitTab(i) {
+  document.querySelectorAll('.kit-tab').forEach((t,j) => t.classList.toggle('active', j===i));
+  document.querySelectorAll('.kit-content').forEach((p,j) => p.classList.toggle('active', j===i));
+}
+
+function renderKitList(i) {
+  const items = ls('kit-' + i) || [];
+  const ul = document.getElementById('kit-list-' + i);
+  ul.innerHTML = items.map((item, j) => `
+    <li><span>${item}</span><button onclick="removeKitItem(${i},${j})">✕</button></li>
+  `).join('');
+}
+
+function addKitItem(i) {
+  const input = document.getElementById('kit-input-' + i);
+  const val = input.value.trim();
+  if (!val) return;
+  const items = ls('kit-' + i) || [];
+  items.push(val);
+  ls('kit-' + i, items);
+  input.value = '';
+  renderKitList(i);
+}
+
+function removeKitItem(i, j) {
+  const items = ls('kit-' + i) || [];
+  items.splice(j, 1);
+  ls('kit-' + i, items);
+  renderKitList(i);
+}
+
+// =========================================================
+// CLOSE MODALS ON BACKDROP
+// =========================================================
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('comfort-modal')) closeComfort();
+  if (e.target.classList.contains('letter-modal')) closeLetter();
+  if (e.target.classList.contains('hug-modal')) document.getElementById('hug-modal').classList.remove('open');
+  if (e.target.classList.contains('mem-detail-modal')) document.getElementById('mem-detail-modal').classList.remove('open');
+  if (e.target.classList.contains('secret-note')) document.getElementById('secret-modal').classList.remove('open');
+});
+
+// =========================================================
+// INIT
+// =========================================================
+window.addEventListener('DOMContentLoaded', () => {
+  loadPeriod();
+  buildEnvelopes();
+  loadMemories();
+  buildHappyThings();
+  buildMoodStickers();
+  renderMoodLog();
+  loadNotes();
+  buildKit();
+});
+</script>
+</body>
+</html>
